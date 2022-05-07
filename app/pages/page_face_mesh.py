@@ -130,10 +130,13 @@ def page() -> None:
 
             front_landmarks = proj_landmarks - nose_point
             front_landmarks = front_landmarks.dot(rot_matrix.T)
+            
+            # normalize x, y and z landmarks into range 0-1
+            norm_landmarks = front_landmarks - front_landmarks.min(axis=0)
+            norm_landmarks /= norm_landmarks.max(axis=0)
 
-            for x, y, z in front_landmarks:
-                offset = 90
-                landmark_coords = int(x * w + offset), int(y * h + offset)
+            for x, y, z in norm_landmarks:
+                landmark_coords = int(x * w), int(y * h)
                 cv2.circle(image, landmark_coords, 2, (255, 0, 0), -1)
 
             return av.VideoFrame.from_ndarray(image, format="bgr24")
