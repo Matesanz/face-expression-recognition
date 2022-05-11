@@ -13,6 +13,10 @@
 
 This project aims to **predict face expressions** (happyness, rage, sadness...) by using a combination of deep learning and machine learning models.
 
+| Normal | Surprise | Angry | Happy | Sad | Wink |
+|----------|-------------|------|----------|----------|----------|
+| ![Normal](assets/emotions/normal.png) |  ![surprise](assets/emotions/surprise.png) | ![Angry](assets/emotions/angry.png) | ![happy](assets/emotions/happy.png) | ![sad](assets/emotions/sad.png) | ![wink](assets/emotions/wink.png) |
+
 ## 👷 How to use
 
 ### 🐋 Using docker
