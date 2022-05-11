@@ -4,14 +4,18 @@ Main Streamlit APP
 
 from pathlib import Path
 from src import components
-
+import streamlit as st
 
 # data folder is in root folder
 DATA_FOLDER = Path(__file__).parent.parent / "data"
+ASSETS_FOLDER = Path(__file__).parent.parent / "assets"
 CLASSIFIER_PATH = Path(__file__).parent / 'classifier.sav'
 
 
 if __name__ == "__main__":
+
+    # Project Description
+    components.project_description()
 
     # Data collection
     components.data_collection(DATA_FOLDER)
