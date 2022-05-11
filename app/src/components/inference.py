@@ -65,5 +65,8 @@ def inference(
 
         if inferenceable:
             webrtc_streamer(
-                "webcam_inference", video_processor_factory=VideoProcessorInference
-            )
+                "webcam_inference",
+                video_processor_factory=VideoProcessorInference,
+                rtc_configuration={  # streamlit cloud
+                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+            })

@@ -69,4 +69,9 @@ def data_collection(data_folder: Union[str, Path]) -> None:
                 cv2.circle(image, landmark_coords, 2, (255, 0, 0), -1)
             return av.VideoFrame.from_ndarray(image, format="bgr24")
 
-    webrtc_streamer("detection", video_processor_factory=VideoProcessorDetection)
+    webrtc_streamer(
+        "detection", 
+        video_processor_factory=VideoProcessorDetection,
+        rtc_configuration={  # streamlit cloud
+            "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+    })
