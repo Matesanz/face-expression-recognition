@@ -4,7 +4,7 @@ Load Model Streamlit Component
 from typing import List, Union
 from pathlib import Path
 import streamlit as st
-from sklearn import datasets
+from sklearn.metrics import accuracy_score
 import pickle
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -19,7 +19,7 @@ def model_training(data_folder: Union[str, Path], model_path: Union[str, Path]) 
     """
 
     # Train Component
-    st.title("Training")
+    st.title("Training KMeans Classifier")
 
     trainable = False
 
@@ -73,4 +73,7 @@ def model_training(data_folder: Union[str, Path], model_path: Union[str, Path]) 
 
         pickle.dump(classifier, open(model_path, "wb"))
 
-        st.success("Model Trained")
+        y_pred = classifier.predict(x_test)
+        acc = accuracy_score(y_test, y_pred)
+
+        st.success(f"✅ Model Trained with an accuracy of {acc*100}%!")
