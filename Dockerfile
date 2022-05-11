@@ -10,6 +10,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requ
 
 # Copy source code
 COPY app/ /app/
+COPY assets/ /assets/
 WORKDIR /app/
 
 # Run Streamlit App
