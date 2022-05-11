@@ -7,3 +7,12 @@ RUN apt update && apt install libopencv-dev -y
 COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
+
+# Copy source code
+COPY app/ /app/
+WORKDIR /app/
+
+# Run Streamlit App
+EXPOSE 8501
+ENTRYPOINT ["streamlit", "run"]
+CMD ["main.py"]
