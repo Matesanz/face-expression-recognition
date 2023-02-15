@@ -2,34 +2,48 @@
 Main Streamlit APP
 """
 
-from pathlib import Path
-from src import components
 import streamlit as st
+from app.settings import settings
+from app import explainers
 
-# data folder is in root folder
-DATA_FOLDER = Path(__file__).parent.parent / "data"
-ASSETS_FOLDER = Path(__file__).parent.parent / "assets"
-CLASSIFIER_PATH = Path(__file__).parent / 'classifier.sav'
+st.set_page_config(
+    page_title="Face Emotion Recognition!",
+    page_icon="😃",
+)
 
+# Project Description
+ASSETS_FOLDER = settings.ASSETS_PATH
 
-if __name__ == "__main__":
+st.title("😃 Face Emotion Recognition!")
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.image(str(ASSETS_FOLDER / ("emotions/happy.png")))
+with col2:
+    st.image(str(ASSETS_FOLDER / ("emotions/surprise.png")))
+with col3:
+    st.image(str(ASSETS_FOLDER / ("emotions/angry.png")))
 
-    # Project Description
-    components.project_description()
+st.markdown(
+    """
+    **In this project, we will build a classifier that can detect emotions from faces.
+    First we will collect data, then we will train a classifier, and finally we will
+    use our classifier to perform inference on a webcam stream.**
 
-    # Data collection
-    components.data_collection(DATA_FOLDER)
-    components.explainers.explain_face_plane()
-    components.explainers.explain_face_mesh_code()
-    components.explainers.explain_project_landmarks_code()
+    ⚡ Everything will be running **REAL TIME** using only **CPU** resources.
+    """
+)
 
+# Data collection
+st.subheader("1. Data Collection")
+explainers.explain_data_collection_stage()
 
-    # Classifier Training
-    components.model_training(DATA_FOLDER, CLASSIFIER_PATH)
-    components.explainers.explain_load_train_data_code()
-    components.explainers.explain_train_kmeans_code()
+st.subheader("2. Data Processing")
+explainers.explain_data_processing_stage()
 
-    # Inference
-    components.inference(DATA_FOLDER, CLASSIFIER_PATH)
-    components.explainers.explain_load_save_model_code()
-    components.explainers.explain_inference_code()
+# Classifier Training
+st.subheader("3. Tranining the Classifier")
+explainers.explain_model_training_stage()
+
+# Inference
+st.subheader("4. Perform Inference using your Webcam")
+explainers.explain_model_prediction_stage()
