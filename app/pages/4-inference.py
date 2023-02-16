@@ -19,7 +19,7 @@ explainers.explain_model_prediction_stage()
 
 MODEL_EXISTS = Path(MODEL_PATH).exists()
 if not MODEL_EXISTS:
-    st.info("No model found")
+    st.error("No model found. Collect data and train a model first.")
 
 else:
     classifier = pickle.load(open(MODEL_PATH, "rb"))
