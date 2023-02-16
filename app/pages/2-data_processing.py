@@ -1,4 +1,5 @@
 from pathlib import Path
+import shutil
 
 import cv2
 import numpy as np
@@ -9,6 +10,10 @@ from app.settings import settings
 
 IMAGES_FOLDER = settings.IMAGES_PATH
 DATA_FOLDER = settings.DATA_PATH
+
+Path(IMAGES_FOLDER).mkdir(parents=True, exist_ok=True)
+Path(DATA_FOLDER).mkdir(parents=True, exist_ok=True)
+
 
 st.title("2. Data Processing")
 explainers.explain_data_processing_stage()
