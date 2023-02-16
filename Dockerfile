@@ -8,18 +8,18 @@ RUN apt update && apt install libopencv-dev -y
 ARG POETRY="1.2.2"
 RUN pip install poetry==${POETRY}
 
+# Install dependencies
+COPY pyproject.toml /
+RUN poetry config virtualenvs.create false \
+   && poetry install --no-interaction --no-ansi --no-root
+
 # Copy source code
-COPY pyproject.toml /app/
 COPY app/ /app/
 COPY assets/ /assets/
-WORKDIR /app/
-
-# Install dependencies
-RUN poetry config virtualenvs.create false \
-   && poetry install --no-interaction --no-ansi --no-root && \
-   && pip install -e .
+RUN pip install -e .
 
 # Run Streamlit App
+WORKDIR /app
 EXPOSE 8501
 ENTRYPOINT ["streamlit", "run"]
 CMD ["main.py"]
