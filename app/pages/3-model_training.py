@@ -36,8 +36,9 @@ for path in Path(DATA_FOLDER).iterdir():
     emotions_paths.append(path)
 
 if not emotions_paths:
-    st.warning(
-        "⚠️ There is no data to train the model on." "Please, collect more data"
+    st.error(
+        "⚠️ There is no data to train the model on. "
+        "Please, collect more data"
     )
 
 elif len(emotions_paths) == 1:
