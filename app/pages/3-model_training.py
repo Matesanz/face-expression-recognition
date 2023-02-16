@@ -22,7 +22,7 @@ explainers.explain_model_training_stage()
 
 TRAINABLE = False
 
-Path(DATA_FOLDER).mkdir(parents=True, exist_ok=True)):
+Path(DATA_FOLDER).mkdir(parents=True, exist_ok=True)
 
 emotions_paths: List[Path] = []
 for path in Path(DATA_FOLDER).iterdir():
