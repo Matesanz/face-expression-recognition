@@ -6,7 +6,7 @@ authors = ["Andrés Matesanz <matesanz.cuadrado@gmail.com>"]
 packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.9.7 || >3.9.7,<3.10"
 streamlit = "^1.18.1"
 streamlit-webrtc = "^0.44.6"
 opencv-python = "^4.7.0.68"
