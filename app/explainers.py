@@ -3,9 +3,9 @@ from PIL import Image
 from typing import Union
 from pathlib import Path
 import numpy as np
+from app.settings import settings
 
-
-ASSETS_FOLDER = Path(__file__).parent.parent.parent.parent / "assets"
+ASSETS_FOLDER = settings.ASSETS_PATH
 INFO_ASSETS_FOLDER = ASSETS_FOLDER / "info"
 SNIPPETS_ASSETS_FOLDER = ASSETS_FOLDER / "snippets"
 
