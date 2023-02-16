@@ -1,8 +1,0 @@
-streamlit
-streamlit-webrtc
-opencv-python
-mediapipe
-keras
-seaborn
-scikit_learn
-scikit_spatial

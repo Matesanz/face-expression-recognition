@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "face_expression_recognition"
+version = "0.1.0"
+description = "Recognize Expressions in images"
+authors = ["Andrés Matesanz <matesanz.cuadrado@gmail.com>"]
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.9.7 || >3.9.7,<3.10"
+streamlit = "^1.18.1"
+streamlit-webrtc = "^0.44.6"
+opencv-python = "^4.7.0.68"
+mediapipe = "^0.9.1.0"
+scikit-learn = "^1.2.1"
+scikit-spatial = "^6.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

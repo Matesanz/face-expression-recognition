@@ -121,4 +121,72 @@ def explain_inference_code() -> None:
         caption=caption
         )
 
+def explain_data_collection_stage() -> None:
+    """
+    Explain the data collection stage
+    """
+    st.markdown(
+        """
+        First step is to collect data to train the model on.
+        Data is a collection of images of faces with different emotions.
+        Images of the same emotion are placed in the same folder.
+        """
+    )
+
+def explain_data_processing_stage() -> None:
+    """
+    Explain the data processing stage
+    """
+    st.markdown(
+        """
+        Second step is to extract features from the images.
+        Features are the **coordinates of the landmarks on the face**.
+        To extract the features, we use the 
+        [MediaPipe Face Mesh](https://google.github.io/mediapipe/solutions/face_mesh.html)
+        model.
+        """
+    )
     
+    explain_face_mesh_code()
+
+    st.markdown(
+        """
+        Once we have the landmarks, we **normalize** them. Normalization is done by
+        projecting the landmarks to a **2D plane**. The plane is defined by the
+        eye-to-eye vector, the frown-lip vector, and the nose point.
+        """
+    )
+
+    explain_face_plane()
+    explain_project_landmarks_code()
+
+def explain_model_training_stage() -> None:
+    """
+    Explain the model training stage
+    """
+    st.markdown(
+        """
+        The last step is to **train the classifier**. We use the
+        [K-Means](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+        algorithm to cluster the data into different emotions.
+        Landmarks of the same emotion are clustered together.
+        """
+    )
+    explain_load_train_data_code()
+    explain_train_kmeans_code()
+
+def explain_model_prediction_stage() -> None:
+    """
+    Explain the model prediction stage
+    """
+
+
+    st.markdown(
+        """
+        Now that we have trained the model, we can use it to perform inference.
+        Inference is the process of predicting the emotion of a face.
+        You can use your webcam to **perform inference on your face in REAL TIME!**
+        """
+    )
+    explain_load_save_model_code()
+    explain_inference_code()
